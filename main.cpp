@@ -1,91 +1,86 @@
-/***************************************************************
- * main.cpp
- *
- * creates, modifies, and prints some lists
- ***************************************************************/
+////////////////////////////////////////////////////////////////
+//  main.cpp
+//
+//  main/driver program for testing the map class
+//
+//  author: Steven R. Vegdahl
+//  author: **** PUT YOUR NAME HERE ****
+//  version: 19 October 2017
+////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include "IntList.h"
-#include "debug.h"
+#include <string>
+#include "map.h"
 
 using namespace std;
 
-// Function to print an IntList. Intentionally uses a value parameter
-// as opposed to a reference, so that we can see copy constructor in
-// action.
+// define the array of pairs, for populating the map
+string pairs[][2] = {
+  {"John", "Stanford"},
+  {"Fred", "Portland"},
+  {"Susan", "Yale"},
+  {"Nathan", "CMU"},
+  {"Jane", "Brown"},
+  {"Savannah", "MIT"},
+};
+
+////////////////////////////////////////////////////////////////
+// method for printing the result of a lookup, or that the lookup
+// failed
 //
-// Parameters:
-// - list: the list to print
-// - os: the output stream to print to; defaults to standard output
-void printList(IntList list, ostream& os=std::cout) {
-  os << list;
-}
-
-// Main program. Creates 5 lists and prints them
-//
-// Returns:
-//  The return status of the program
-int main() {
-  // declare first two integer lists
-  IntList list1; // empty list
-  IntList list2(4); // list with single element, 4
-
-  // debug-print list-addresses
-  print2("list1: ", &list1);
-  print2("list2: ", &list2);
-
-  // print list2's first element
-  cout << "list2, first: " << list2.getFirstElement() << endl;
-
-  // add a 56 to the front of list2; print first element
-  list2.addToFront(56);
-  cout << "list2, first: " << list2.getFirstElement() << endl;
-
-  // remove front element from list2; print first element and length
-  cout << "result of removeFromFront: " << list2.removeFromFront() << endl;
-  cout << "list2, first: " << list2.getFirstElement() << endl;
-  cout << "list2, length: " << list2.length() << endl;
-
-  // create a third list, with a total of 4 elements
-  IntList list3(45);
-  list3.addToFront(37);
-  list3.addToFront(101);
-  list3.addToFront(222);
-
-  // create a fourth list with one element
-  IntList list4(35);
-
-  // overwrite the fourth list so that it is the same as the third
-  list4 = list3;
-
-  // loop through and do some removals and
-  print1("begin mod loop for list4");
-  for (int i = 0; i < 3; i++) {
-    int a = list4.removeFromFront();
-    int b = list4.removeFromFront();
-    list4.addToFront(i);
-    list4.addToFront(b);
+// parameters:
+// - dict: the dictionary (map) to use
+// - name: the name to look up
+////////////////////////////////////////////////////////////////
+void printSearchResult(map& dict, string name) {
+  string result;
+  if (dict.get(name, result)) {
+    cout << "found " << name << " => " << result << endl;
   }
-  print1("end mod loop for list4");
+  else {
+    cout << "not found: " << name << endl;
+  }
+}  
 
-  // create a fifth list object on the heap, a copy of list2
-  IntList* ptr5 = new IntList(list3);
+////////////////////////////////////////////////////////////////
+// the main method: populates a map; prints; does additional
+// operations; prints again
+////////////////////////////////////////////////////////////////
+int main(int argc, const char * argv[]) {
 
-  // remove an element from the front of the fifth list
-  ptr5->removeFromFront();
+  // the map to use
+  map dict;
 
-  // print the lists
-  cout << "list1: " << list1 << endl;
-  cout << "list2: " << list2 << endl;
-  cout << "list3: " << list3 << endl;
-  cout << "list4: "; printList(list4); cout << endl; // value-parameter
-  cout << "*ptr5 (fifth list): " << *ptr5 << endl;
+  // populate with some elements
+  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+    dict.put(pairs[i][0], pairs[i][1]);
+  }
 
-  // deallocate the heap-allocated list
-  print1("deallocating ptr5");
-  delete ptr5;
+  // print the contents before modifying
+  cout << "======== before modifications ========" << endl;
+  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+    printSearchResult(dict, pairs[i][0]);
+  }
 
-  // exit
-  print1("exit 'main'");
+  // print the map
+  cout << dict << endl;
+
+  // do some modifications
+  dict.remove(pairs[0][0]);
+  dict.remove(pairs[4][0]);
+  dict.put(pairs[2][0],pairs[5][1]);
+
+  // print the contents after modifying
+  cout << "======== after modifications ========" << endl;
+  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+    printSearchResult(dict, pairs[i][0]);
+  }
+
+  // print the map
+  cout << dict << endl;
+
+  // print the size of the map
+  cout << "size: " << +dict << endl;
+
   return 0;
 }

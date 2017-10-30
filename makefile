@@ -1,16 +1,16 @@
 all: test
 
-test: main.o IntList.o IntListNode.o
-	g++ -o test main.o IntList.o IntListNode.o
+test: main.o map.o treeNode.o
+	g++ -o test main.o map.o treeNode.o
 
-main.o: main.cpp IntList.h debug.h
+map.o: map.cpp map.h treeNode.h
+	g++ -c map.cpp
+
+treeNode.o: treeNode.cpp treeNode.h
+	g++ -c treeNode.cpp
+
+main.o: main.cpp map.h
 	g++ -c main.cpp
 
-IntList.o: IntList.cpp IntList.h IntListNode.h debug.h
-	g++ -c IntList.cpp
-
-IntListNode.o: IntListNode.cpp IntListNode.h debug.h
-	g++ -c IntListNode.cpp
-
 clean:
-	rm -f *.o test
+	/bin/rm -rf test *.o
