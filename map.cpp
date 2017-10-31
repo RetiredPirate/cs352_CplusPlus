@@ -4,14 +4,20 @@
 //  implements a dictionary (map) class
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
-//  version: 19 October 2017
+//  author: Andrew M. Williams
+//  version: 30 October 2017
 ////////////////////////////////////////////////////////////////
 
 #include <iostream>
 #include <string>
 #include "map.h"
 #include "treeNode.h"
+
+
+
+map::map(void) {
+    root = new treeNode();
+}
 
 
 ////////////////////////////////////////////////////////////////
@@ -25,7 +31,7 @@
 // that entry is overwritten.
 ////////////////////////////////////////////////////////////////
 void map::put(string key, string value) {
-  // dummied up
+    // dummied up
 }
 
 ////////////////////////////////////////////////////////////////
@@ -43,8 +49,8 @@ void map::put(string key, string value) {
 // true.
 ////////////////////////////////////////////////////////////////
 bool map::get(string key, string& value) const {
-  // dummied up
-  return false;
+    // dummied up
+    return false;
 }
 
 ////////////////////////////////////////////////////////////////
@@ -57,8 +63,8 @@ bool map::get(string key, string& value) const {
 //   true if the value was removed, false if it was not there
 ////////////////////////////////////////////////////////////////
 bool map::remove(string key) {
-  // dummied up
-  return false;
+    // dummied up
+    return false;
 }
 
 
@@ -69,8 +75,8 @@ bool map::remove(string key) {
 //   the number of elements in the map
 ////////////////////////////////////////////////////////////////
 int map::operator+() const {
-  // dummied up: return an obviously incorrect value
-  return -6;
+    // dummied up: return an obviously incorrect value
+    return -6;
 }
 
 ////////////////////////////////////////////////////////////////
@@ -84,9 +90,9 @@ int map::operator+() const {
 //   a reference to the output stream
 ////////////////////////////////////////////////////////////////
 ostream& operator<<(ostream& os, const map& dict) {
-  // dummied up, so just print a dummy string
-  os << "dummied up";
-  
-  // return
-  return os;
+    // dummied up, so just print a dummy string
+    os << "dummied up";
+
+    // return
+    return os;
 }

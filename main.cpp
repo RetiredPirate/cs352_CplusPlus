@@ -4,7 +4,7 @@
 //  main/driver program for testing the map class
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew M. Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -40,7 +40,7 @@ void printSearchResult(map& dict, string name) {
   else {
     cout << "not found: " << name << endl;
   }
-}  
+}
 
 ////////////////////////////////////////////////////////////////
 // the main method: populates a map; prints; does additional

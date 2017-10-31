@@ -4,8 +4,8 @@
 //  include-file for treeNode.cpp, which implements a BST
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
-//  version: 19 October 2017
+//  author: Andrew M. Williams
+//  version: 30 October 2017
 ////////////////////////////////////////////////////////////////
 
 #ifndef __treeNode_h__
@@ -14,8 +14,15 @@
 using namespace std;
 
 class treeNode {
-  // this entire class is presently dummied up
+    public:
+        treeNode();
+        ~treeNode();
+    private:
+        string key;
+        string value;
+        treeNode* parent;
+        treeNode* left;
+        treeNode* right;
 };
 
 #endif // #ifndef __treeNode_h__
-
