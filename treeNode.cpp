@@ -13,4 +13,16 @@
 
 using namespace std;
 
+
+template<typename T, typename S> treeNode<T, S>::treeNode(T initKey, S initValue) {
+    key = initKey;
+    value = initValue;
+}
+
+
+
+template<typename T, typename S> treeNode<T, S>::treeNode() {
+    
+}
+
 // this class is presently dummied up

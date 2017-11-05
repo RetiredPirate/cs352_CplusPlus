@@ -15,8 +15,16 @@ using namespace std;
 
 template <typename T, typename S>
 class treeNode {
-  // this entire class is presently dummied up
+public:
+    treeNode* left;
+    treeNode* right;
+    treeNode* parent;
+    S value;
+    T key;
+    treeNode(T initKey, S initValue);
+    ~treeNode();
+private:
+    int refCount;
 };
 
 #endif // #ifndef __treeNode_h__
-
