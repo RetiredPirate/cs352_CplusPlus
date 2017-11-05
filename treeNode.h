@@ -4,7 +4,7 @@
 //  include-file for treeNode.cpp, which implements a BST
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -19,8 +19,8 @@ public:
     treeNode* left;
     treeNode* right;
     treeNode* parent;
-    S value;
     T key;
+    S value;
     treeNode(T initKey, S initValue);
     ~treeNode();
 private:

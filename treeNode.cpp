@@ -4,7 +4,7 @@
 //  treeNode.cpp, which implements a BST
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -13,16 +13,22 @@
 
 using namespace std;
 
-
+/* treeNode()
+ *
+ */
 template<typename T, typename S> treeNode<T, S>::treeNode(T initKey, S initValue) {
     key = initKey;
     value = initValue;
+    refCount = 1;
+    parent = NULL;
+    left = NULL;
+    right = NULL;
 }
 
 
 
-template<typename T, typename S> treeNode<T, S>::treeNode() {
-    
+template<typename T, typename S> treeNode<T, S>::~treeNode() {
+
 }
 
 // this class is presently dummied up

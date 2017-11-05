@@ -4,7 +4,7 @@
 //  include-file for map.cpp, which implements a dictionary
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -23,7 +23,7 @@ class map {
 private:
   // instance variable: the root of our tree
   treeNode<T,S>* root;
-    
+
 public:
 
   ////////////////////////////////////////////////////////////////
@@ -60,7 +60,7 @@ public:
   // true.
   ////////////////////////////////////////////////////////////////
   bool get(T key, S& value) const;
-  
+
   ////////////////////////////////////////////////////////////////
   // remove: removes an elementn from the map
   //
@@ -79,7 +79,7 @@ public:
   //   the number of elements in the map
   ////////////////////////////////////////////////////////////////
   int operator+() const;
-  
+
   // declare output operator as friend function
   template<typename TT, typename SS>
     friend ostream& operator<<(ostream& os, const map<TT,SS>& dict);
@@ -99,4 +99,3 @@ template<typename T, typename S>
 std::ostream& operator<<(std::ostream& os, const map<T,S>& dict);
 
 #endif // #ifndef __map_h__
-

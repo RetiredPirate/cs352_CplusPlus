@@ -4,7 +4,7 @@
 //  main/driver program for testing the map class
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -55,7 +55,7 @@ void printSearchResult(map<string,string>& dict, string name) {
   else {
     cout << "not found: " << name << endl;
   }
-}  
+}
 #else
 void printSearchResult(map<int,int>& dict, int val) {
   int result;
@@ -65,7 +65,7 @@ void printSearchResult(map<int,int>& dict, int val) {
   else {
     cout << "not found: " << val << endl;
   }
-}  
+}
 #endif
 
 ////////////////////////////////////////////////////////////////

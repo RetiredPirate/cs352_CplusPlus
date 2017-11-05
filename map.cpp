@@ -4,7 +4,7 @@
 //  implements a dictionary (map) class
 //
 //  author: Steven R. Vegdahl
-//  author: **** PUT YOUR NAME HERE ****
+//  author: Andrew Williams
 //  version: 19 October 2017
 ////////////////////////////////////////////////////////////////
 
@@ -25,7 +25,44 @@
 // that entry is overwritten.
 ////////////////////////////////////////////////////////////////
 template<typename T, typename S> void map<T,S>::put(T key, S value) {
-  // dummied up
+    treeNode<T,S>* initNode = new treeNode<T,S>(key, value);
+
+    if (root == NULL) {
+        root = initNode;
+    }
+    else {
+        treeNode<T,S>* tempNode = root;
+        while(true) {
+            if (initNode->key == tempNode->key) {
+                //replace
+                tempNode->value = initNode->value;
+                break;
+            }
+            else if (initNode->key < tempNode->key) {
+                //go left
+                if (tempNode->left == NULL) {
+                    tempNode->left = initNode;
+                    initNode->parent = tempNode;
+                    break;
+                }
+                else {
+                    tempNode = tempNode->left;
+                }
+            }
+            else {
+                //go right
+                if (tempNode->right == NULL) {
+                    tempNode->right = initNode;
+                    initNode->parent = tempNode;
+                    break;
+                }
+                else {
+                    tempNode = tempNode->right;
+                }
+            }
+        }
+    }
+
 }
 
 ////////////////////////////////////////////////////////////////
@@ -86,7 +123,7 @@ template<typename T, typename S>
 ostream& operator<<(ostream& os, const map<T,S>& dict) {
   // dummied up, so just print a dummy string
   os << "dummied up";
-  
+
   // return
   return os;
 }
