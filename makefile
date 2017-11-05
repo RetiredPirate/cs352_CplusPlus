@@ -1,13 +1,10 @@
 all: test
 
-test: main.o map.o treeNode.o
-	g++ -o test main.o map.o treeNode.o
+test: main.o instantiate.o
+	g++ -o test main.o instantiate.o
 
-map.o: map.cpp map.h treeNode.h
-	g++ -c map.cpp
-
-treeNode.o: treeNode.cpp treeNode.h
-	g++ -c treeNode.cpp
+instantiate.o: instantiate.cpp map.cpp map.h treeNode.cpp treeNode.h 
+	g++ -c instantiate.cpp
 
 main.o: main.cpp map.h
 	g++ -c main.cpp

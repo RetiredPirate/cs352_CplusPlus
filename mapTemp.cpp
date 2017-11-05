@@ -9,7 +9,6 @@
 ////////////////////////////////////////////////////////////////
 
 #include <iostream>
-#include <string>
 #include "map.h"
 #include "treeNode.h"
 
@@ -48,7 +47,7 @@ template<typename T, typename S> bool map<T,S>::get(T key, S& value) const {
 }
 
 ////////////////////////////////////////////////////////////////
-// remove: removes an element from the map
+// remove: removes an elementn from the map
 //
 // parameters:
 // - key: the lookup key that specifies the element to remove
@@ -59,34 +58,4 @@ template<typename T, typename S> bool map<T,S>::get(T key, S& value) const {
 template<typename T, typename S> bool map<T,S>::remove(T key) {
   // dummied up
   return false;
-}
-
-////////////////////////////////////////////////////////////////
-// unary + operator: size
-//
-// returns:
-//   the number of elements in the map
-////////////////////////////////////////////////////////////////
-template<typename T, typename S> int map<T,S>::operator+() const {
-  // dummied up: return an obviously incorrect value
-  return -6;
-}
-
-////////////////////////////////////////////////////////////////
-// << operator: prints to a stream
-//
-// parameters:
-// - os: the output stream to print to
-// - dict: the map to print
-//
-// returns:
-//   a reference to the output stream
-////////////////////////////////////////////////////////////////
-template<typename T, typename S>
-ostream& operator<<(ostream& os, const map<T,S>& dict) {
-  // dummied up, so just print a dummy string
-  os << "dummied up";
-  
-  // return
-  return os;
 }
