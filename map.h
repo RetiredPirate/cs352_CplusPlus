@@ -24,12 +24,16 @@ private:
   // instance variable: the root of our tree
   treeNode<T,S>* root;
 
+  // instance variable: the number of nodes in the tree;
+  int size;
+
 public:
 
   ////////////////////////////////////////////////////////////////
   // constructor: creates an empty map object
   ////////////////////////////////////////////////////////////////
   inline map(): root(NULL) {
+      size = 0;
     // presently, just sets the root to NULL
   }
 
@@ -73,6 +77,15 @@ public:
   bool remove(T key);
 
   ////////////////////////////////////////////////////////////////
+  // findNode: find a node in the tree, assuming not NULL
+  //
+  // returns:
+  //   a reference to the node with the given key
+  //   returns null if the node is not found
+  ////////////////////////////////////////////////////////////////
+  treeNode<T,S>* findNode(T findKey, treeNode<T,S>* currNode) const;
+
+  ////////////////////////////////////////////////////////////////
   // unary + operator: size
   //
   // returns:
@@ -97,5 +110,20 @@ public:
 ////////////////////////////////////////////////////////////////
 template<typename T, typename S>
 std::ostream& operator<<(std::ostream& os, const map<T,S>& dict);
+
+
+////////////////////////////////////////////////////////////////
+// getMapString: returns a string representation of the map
+//
+// parameters:
+// - os: the output stream to print to
+// - currNode: the node to print
+//
+// returns:
+//   a reference to the output stream
+////////////////////////////////////////////////////////////////
+template<typename T, typename S>
+ostream& getMapString(ostream& os, treeNode<T,S>* currNode);
+
 
 #endif // #ifndef __map_h__
