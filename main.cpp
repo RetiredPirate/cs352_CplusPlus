@@ -12,7 +12,7 @@
 #include <string>
 #include "map.h"
 
-#define DO_STRING true // set to true for strings, false for ints
+#define DO_STRING false // set to true for strings, false for ints
 
 using namespace std;
 
@@ -33,7 +33,7 @@ int pairs[][2] = {
   {66,3},
   {7,43},
   {8,33},
-  {6,3},
+  //{6,3},
   {23,56}
 };
 #endif
@@ -76,41 +76,43 @@ int main(int argc, const char * argv[]) {
 
   // the map to use
 #if DO_STRING
-  map<string,string> dict;
+    map<string,string> dict;
 #else
-  map<int, int> dict;
+    map<int, int> dict;
 #endif
 
-  // populate with some elements
-  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+    // populate with some elements
+    for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
     dict.put(pairs[i][0], pairs[i][1]);
-  }
+    }
 
-  // print the contents before modifying
-  cout << "======== before modifications ========" << endl;
-  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+    // print the contents before modifying
+    cout << "======== before modifications ========" << endl;
+    for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
     printSearchResult(dict, pairs[i][0]);
-  }
+    }
 
-  // print the map
-  cout << dict << endl;
+    // print the map
+    cout << dict << endl;
 
-  // do some modifications
-  dict.remove(pairs[0][0]);
-  dict.remove(pairs[4][0]);
-  dict.put(pairs[2][0],pairs[5][1]);
+    // do some modifications
+    dict.remove(pairs[0][0]);
+    dict.remove(pairs[4][0]);
+    dict.put(pairs[2][0],pairs[5][1]);
 
-  // print the contents after modifying
-  cout << "======== after modifications ========" << endl;
-  for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
+
+
+    // print the contents after modifying
+    cout << "======== after modifications ========" << endl;
+    for (int i = 0; i < sizeof(pairs)/sizeof(*pairs); i++) {
     printSearchResult(dict, pairs[i][0]);
-  }
+    }
 
-  // print the map
-  cout << dict << endl;
+    // print the map
+    cout << dict << endl;
 
-  // print the size of the map
-  cout << "size: " << +dict << endl;
+    // print the size of the map
+    cout << "size: " << +dict << endl;
 
-  return 0;
+    return 0;
 }

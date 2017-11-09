@@ -22,10 +22,6 @@ public:
     T key;
     S value;
     treeNode(T initKey, S initValue);
-    treeNode(const treeNode& copyNode);
-    ~treeNode();
-private:
-    int refCount;
 };
 
 #endif // #ifndef __treeNode_h__
